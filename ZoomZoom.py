@@ -30,7 +30,9 @@ def text_objects(text, font):
     return textSurface, textSurface.get_rect()
 
 def message_display(text):
-    largeText = pygame.font.Font('freesansbold.ttf', 115)
+    # Reminder: Figure out how to set absolute path for pricedown font!
+    # For now place 'pricedown.ttf' in ~/python3/dist-packages/pygame
+    largeText = pygame.font.Font('pricedown.ttf', 115)
     TextSurf, TextRect = text_objects(text, largeText)
     TextRect.center = ((display_width/2), (display_height/2))
     gameDisplay.blit(TextSurf, TextRect)
