@@ -9,8 +9,12 @@ display_height = 600
 
 black = (0,0,0)
 white = (255,255,255)
-red = (255,0,0)
-green = (50,205,50)
+
+red = (200,0,0)
+green = (0,200,50)
+
+bright_red = (255,0,0)
+bright_green = (0,255,0)
 
 block_color = (53,115,255)
 
@@ -60,6 +64,7 @@ def game_intro():
 
     while intro:
         for event in pygame.event.get():
+            # print(event)
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
@@ -69,6 +74,22 @@ def game_intro():
         TextSurf, TextRect = text_objects("Zoom Zoom", largeText)
         TextRect.center = ((display_width/2), (display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
+
+        mouse = pygame.mouse.get_pos()
+        #print(mouse)
+
+        if 150+100 > mouse[0] > 150 and 450+50 > mouse[1] > 450:
+            pygame.draw.rect(gameDisplay, bright_green, (150,450,100,50))
+        else:
+            pygame.draw.rect(gameDisplay, green, (150,450,100,50))
+
+        smallText = pygame.font.Font("pricedown.ttf",30)
+        textSurf, textRect = text_objects("RACE", smallText)
+        textRect.center = ( (150+(100/2)), (450+(50/2)) )
+        gameDisplay.blit(textSurf, textRect)
+            
+        pygame.draw.rect(gameDisplay, black, (550,450,100,50))
+        
         pygame.display.update()
         clock.tick(15)
 
